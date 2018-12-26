@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+</head>
+<body>
+    The main file
+
+    <div>
+        <button id="getDetails" onclick="loadData()">Click here</button>
+    </div>
+    <div>
+        <p id="render"></p>
+    </div>
+</body>
+<script>
+    function loadData() {
+        let xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function(){
+
+
+            if(this.readyState == 4 && this.status == 200)
+                document.getElementById('render').innerHTML = this.response.toString();
+
+
+        };
+        xhttp.open("GET","/api/",true);
+        xhttp.send();
+    }
+</script>
+</html>
